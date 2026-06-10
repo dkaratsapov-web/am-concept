@@ -3,9 +3,6 @@
    Воссоздание дизайна из Figma
    =========================================================== */
 
-/* Дисплейный шрифт из макета: Bebas Neue Cyrillic (узкий, капсом) */
-@import url('https://fonts.cdnfonts.com/css/bebas-neue-cyrillic');
-
 :root {
   --bg:        #0E0E0C;   /* чёрный — основной фон          */
   --bg-2:      #17150F;   /* тёмная карточка                */
@@ -21,8 +18,8 @@
   --radius:    24px;
 
   --maxw: 1600px;
-  --display: 'Bebas Neue Cyrillic', 'Oswald', 'Bebas Neue', sans-serif;
-  --body: 'Manrope', system-ui, sans-serif;
+  --display: 'Cormorant Garamond', Georgia, serif;
+  --body: 'Nunito Sans', system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -146,10 +143,10 @@ img { max-width: 100%; display: block; }
 
 .display {
   font-family: var(--display);
-  font-weight: 500;
-  font-size: clamp(38px, 5vw, 64px);
-  line-height: 1.02;
-  letter-spacing: -.5px;
+  font-weight: 600;
+  font-size: clamp(40px, 5.2vw, 68px);
+  line-height: 1.08;
+  letter-spacing: 0;
   color: var(--cream);
   text-transform: none;
 }
@@ -301,11 +298,11 @@ img { max-width: 100%; display: block; }
 }
 .hero__title {
   font-family: var(--display);
-  font-weight: 400;
+  font-weight: 600;
   text-transform: uppercase;
-  font-size: clamp(46px, 8vw, 132px);
-  line-height: .9;
-  letter-spacing: 1px;
+  font-size: clamp(48px, 8vw, 134px);
+  line-height: .96;
+  letter-spacing: 1.5px;
   color: #fff;
   margin-bottom: 48px;
   max-width: 1180px;
@@ -376,10 +373,11 @@ img { max-width: 100%; display: block; }
 .trial__intro { position: relative; z-index: 1; display: flex; align-items: center; }
 .trial__title {
   font-family: var(--display);
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
-  font-size: clamp(22px, 2vw, 32px);
-  line-height: .96;
+  font-size: clamp(22px, 2.1vw, 34px);
+  line-height: .98;
+  letter-spacing: .5px;
   color: var(--ink);
   white-space: nowrap;
 }
