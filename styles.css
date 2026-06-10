@@ -373,19 +373,7 @@ img { max-width: 100%; display: block; }
   background: radial-gradient(circle, rgba(255,255,255,.45), rgba(255,255,255,0) 70%);
   pointer-events: none;
 }
-.trial__intro { position: relative; z-index: 1; }
-.trial__badge {
-  display: inline-block;
-  margin-bottom: 8px;
-  padding: 5px 14px;
-  border-radius: 100px;
-  background: rgba(21,20,15,.10);
-  border: 1px solid rgba(21,20,15,.28);
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--ink);
-}
+.trial__intro { position: relative; z-index: 1; display: flex; align-items: center; }
 .trial__title {
   font-family: var(--display);
   font-weight: 500;
