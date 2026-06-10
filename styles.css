@@ -545,13 +545,14 @@ img { max-width: 100%; display: block; }
 /* ===========================================================
    О студии
    =========================================================== */
-.about .display { margin: 24px 0 50px; }
 .about__grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 420px;
   gap: 60px;
-  align-items: start;          /* верх фото по верху текста */
+  align-items: stretch;        /* фото = высоте колонки заголовок+текст */
 }
+.about__left { display: flex; flex-direction: column; }
+.about .display { margin: 0 0 40px; }
 .about__text {
   max-width: 640px;
   display: flex;
@@ -562,12 +563,13 @@ img { max-width: 100%; display: block; }
   color: var(--cream);
 }
 .about__highlight { color: var(--gold-soft); font-weight: 600; }
-/* вертикальное фото (3:4) в матовой рамке с золотым кантом */
+/* вертикальное фото в матовой рамке — от верха заголовка до низа текста */
 .about__media {
+  position: relative;
+  overflow: hidden;
   margin: 0;
   justify-self: end;
   width: 100%;
-  max-width: 420px;
   padding: 12px;
   border-radius: 28px;
   background: linear-gradient(160deg, #211D16, #15140F);
@@ -575,9 +577,10 @@ img { max-width: 100%; display: block; }
   box-shadow: 0 30px 70px rgba(0,0,0,.5);
 }
 .about__media img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 3 / 4;
+  position: absolute;
+  inset: 12px;
+  width: calc(100% - 24px);
+  height: calc(100% - 24px);
   object-fit: cover;
   border-radius: 18px;
   border: 1px solid rgba(198,166,92,.35);
@@ -851,7 +854,8 @@ img { max-width: 100%; display: block; }
   .hero__title { letter-spacing: 0; }
   .hero__links { flex-direction: column; align-items: flex-start; gap: 18px; }
   .about__grid, .services__row, .space__head, .promos__head { grid-template-columns: 1fr; display: grid; gap: 30px; }
-  .about__media { justify-self: stretch; max-width: 420px; }
+  .about__grid { grid-template-columns: 1fr; }
+  .about__media { justify-self: stretch; max-width: 420px; aspect-ratio: 3 / 4; }
   .services__row--reverse .services__photo { order: 0; }
   .features { grid-template-columns: 1fr; }
   .grid-cards, .grid-cards--3, .grid-trainers, .contacts__grid { grid-template-columns: 1fr; }
