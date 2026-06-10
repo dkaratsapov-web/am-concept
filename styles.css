@@ -554,7 +554,26 @@ img { max-width: 100%; display: block; }
   color: var(--cream);
 }
 .about__highlight { color: var(--gold-soft); font-weight: 600; }
-.about__photo { height: 360px; }
+/* фото в матовой рамке с золотым кантом */
+.about__media {
+  justify-self: center;
+  margin: 0;
+  width: 100%;
+  max-width: 440px;
+  padding: 12px;
+  border-radius: 28px;
+  background: linear-gradient(160deg, #211D16, #15140F);
+  border: 1px solid var(--line);
+  box-shadow: 0 30px 70px rgba(0,0,0,.5);
+}
+.about__media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 18px;
+  border: 1px solid rgba(198,166,92,.35);
+}
 
 /* ===========================================================
    Пространство
