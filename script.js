@@ -51,31 +51,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* --- Анимация печати цитаты --- */
+  /* --- Анимация печати цитаты (переносы строк зафиксированы заранее) --- */
   const quoteEl = document.querySelector('.quote__text');
   if (quoteEl) {
     const typed = quoteEl.querySelector('.quote__typed');
     const caret = quoteEl.querySelector('.quote__caret');
     const full = quoteEl.dataset.text || '';
+    // раскладываем все символы скрытыми — перенос строк фиксирован с самого начала
+    const spans = Array.from(full).map((ch) => {
+      const s = document.createElement('span');
+      s.textContent = ch;
+      s.style.visibility = 'hidden';
+      typed.appendChild(s);
+      return s;
+    });
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduced) {
-      typed.textContent = full;
+      spans.forEach((s) => { s.style.visibility = 'visible'; });
       if (caret) caret.style.display = 'none';
     } else {
       let started = false;
-      const type = () => {
+      const run = () => {
         if (started) return;
         started = true;
         let i = 0;
         const tick = () => {
-          typed.textContent = full.slice(0, i);
-          if (i < full.length) { i++; setTimeout(tick, 40); }
-          else if (caret) { setTimeout(() => { caret.style.display = 'none'; }, 1800); }
+          if (i < spans.length) {
+            spans[i].style.visibility = 'visible';
+            if (caret) spans[i].after(caret);
+            i++;
+            setTimeout(tick, 40);
+          } else if (caret) {
+            setTimeout(() => { caret.style.display = 'none'; }, 1800);
+          }
         };
         tick();
       };
       const qio = new IntersectionObserver((entries) => {
-        entries.forEach((e) => { if (e.isIntersecting) { type(); qio.disconnect(); } });
+        entries.forEach((e) => { if (e.isIntersecting) { run(); qio.disconnect(); } });
       }, { threshold: 0.45 });
       qio.observe(quoteEl);
     }
