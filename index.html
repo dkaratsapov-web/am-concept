@@ -21,20 +21,24 @@
 
   <!-- ░░░ Шапка ░░░ -->
   <header class="header" id="top">
-    <div class="container header__inner">
-      <nav class="nav nav--left">
-        <a href="#about">О студии</a>
-        <a href="#directions">Направления</a>
-        <a href="#services">Услуги</a>
-      </nav>
+    <div class="header__bar">
+      <!-- 1. Лого отдельным блоком -->
       <a href="#top" class="logo" aria-label="A&M Concept — женская фитнес студия">
         <img src="images/logo.svg" alt="A&M Concept" width="105" height="60" />
       </a>
-      <nav class="nav nav--right">
+      <!-- 2. Якоря отдельным прямоугольником -->
+      <nav class="nav">
+        <a href="#about">О студии</a>
+        <a href="#directions">Направления</a>
+        <a href="#services">Услуги</a>
         <a href="#promos">Тарифы</a>
         <a href="#promos">Акции</a>
         <a href="#contacts">Контакты</a>
       </nav>
+      <!-- 3. Кнопка «Написать нам» (Telegram). href вставить позже. -->
+      <a href="#" class="header__cta" id="contact-link" target="_blank" rel="noopener">
+        Написать нам
+      </a>
     </div>
   </header>
 
@@ -55,6 +59,18 @@
             <a href="#promos" class="hero__link">Присоединиться</a>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ░░░ Золотая форма «Пробная тренировка» — во всю ширину ░░░ -->
+    <section class="trial" id="trial">
+      <div class="trial__inner container">
+        <h2 class="trial__title">Записаться на пробную тренировку</h2>
+        <form class="trial__form" id="trial-form" novalidate>
+          <input type="text" name="name" placeholder="Ваше имя" required />
+          <input type="tel" name="phone" placeholder="Телефон" required />
+          <button type="submit">Записаться</button>
+        </form>
       </div>
     </section>
 

@@ -73,34 +73,55 @@ img { max-width: 100%; display: block; }
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 50;
-  padding: 18px 24px;                 /* отступ, чтобы «пилюля» плавала */
+  padding: 16px 24px;
 }
-/* плавающая шапка с границей и скруглением */
-.header__inner {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+/* шапка из нескольких отдельных частей */
+.header__bar {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  display: flex;
   align-items: center;
-  padding-block: 13px;
-  border: 1px solid rgba(255,255,255,.38);
-  border-radius: 34px;
+  justify-content: space-between;
+  gap: 16px;
+}
+/* общий вид «пилюль» (лого и якоря) */
+.logo,
+.nav {
+  border: 1px solid rgba(255,255,255,.34);
   background: rgba(255,255,255,.06);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
+  border-radius: 100px;
   transition: background .35s ease, border-color .35s ease;
 }
-/* затемнённая шапка после прокрутки первого экрана */
-.header.scrolled .header__inner {
+/* 1. лого — отдельным блоком слева */
+.logo { display: inline-flex; align-items: center; padding: 6px 24px; }
+.logo img { height: 46px; width: auto; display: block; }
+/* 2. якоря — отдельным прямоугольником */
+.nav { display: flex; gap: 30px; font-size: 16px; padding: 17px 34px; }
+.nav a { color: rgba(255,255,255,.88); transition: color .2s; }
+.nav a:hover { color: #fff; }
+/* 3. кнопка «Написать нам» (Telegram) */
+.header__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 17px 30px;
+  border-radius: 100px;
+  background: var(--gold);
+  color: #15140F;
+  font-weight: 600;
+  font-size: 15px;
+  white-space: nowrap;
+  transition: background .2s ease, transform .2s ease;
+}
+.header__cta:hover { background: var(--gold-soft); transform: translateY(-1px); }
+/* затемнение пилюль после прокрутки первого экрана */
+.header.scrolled .logo,
+.header.scrolled .nav {
   background: rgba(20,19,15,.9);
   border-color: var(--line);
 }
-.nav { display: flex; gap: 42px; font-size: 16px; }
-.nav--left  { justify-content: flex-start; }
-.nav--right { justify-content: flex-end; }
-.nav a { color: rgba(255,255,255,.9); transition: color .2s; }
-.nav a:hover { color: #fff; }
-
-.logo { display: inline-flex; align-items: center; justify-self: center; }
-.logo img { height: 56px; width: auto; display: block; }
 
 /* ===========================================================
    Общие типографические элементы
@@ -310,6 +331,65 @@ img { max-width: 100%; display: block; }
   background: #fff;
 }
 .hero__link:hover { gap: 18px; border-color: #fff; }
+
+/* ===========================================================
+   Золотая форма «Записаться на пробную тренировку» (во всю ширину)
+   =========================================================== */
+.trial {
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(100deg, var(--gold) 0%, var(--gold-soft) 60%, var(--gold) 100%);
+  color: var(--ink);
+}
+.trial__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding-block: 46px;
+}
+.trial__title {
+  font-family: var(--display);
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: clamp(28px, 3.4vw, 52px);
+  line-height: .98;
+  color: var(--ink);
+  max-width: 620px;
+}
+.trial__form {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.trial__form input {
+  background: rgba(255,255,255,.7);
+  border: 1px solid rgba(21,20,15,.22);
+  border-radius: 100px;
+  padding: 16px 26px;
+  font-family: var(--body);
+  font-size: 16px;
+  color: var(--ink);
+  min-width: 210px;
+}
+.trial__form input::placeholder { color: rgba(21,20,15,.55); }
+.trial__form input:focus { outline: 2px solid var(--ink); outline-offset: 1px; }
+.trial__form button {
+  background: var(--ink);
+  color: var(--cream);
+  border: 0;
+  border-radius: 100px;
+  padding: 17px 36px;
+  font-family: var(--body);
+  font-weight: 600;
+  font-size: 15px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+}
+.trial__form button:hover { background: #000; transform: translateY(-1px); }
 
 /* ===========================================================
    О студии
@@ -561,8 +641,9 @@ img { max-width: 100%; display: block; }
   .container { padding-inline: 22px; }
   .section { padding-block: 70px; }
   .nav { display: none; }
-  .header__inner { grid-template-columns: 1fr; justify-items: center; }
-  .logo img { height: 46px; }
+  .logo img { height: 38px; }
+  .logo { padding: 6px 18px; }
+  .header__cta { padding: 13px 20px; font-size: 14px; }
   .hero__inner { padding-top: 110px; padding-bottom: 32px; }
   .hero__eyebrow { font-size: 15px; margin-bottom: 12vh; }
   .hero__title { letter-spacing: 0; }

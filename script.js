@@ -11,9 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  /* --- Маска телефона --- */
-  const phone = document.querySelector('input[name="phone"]');
-  if (phone) {
+  /* --- Маска телефона (на всех полях phone) --- */
+  document.querySelectorAll('input[name="phone"]').forEach((phone) => {
     phone.addEventListener('input', (e) => {
       let d = e.target.value.replace(/\D/g, '');
       if (d.startsWith('8')) d = '7' + d.slice(1);
@@ -26,11 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (d.length >= 9) out += '-' + d.slice(8, 10);
       e.target.value = out;
     });
-  }
+  });
 
-  /* --- Отправка формы (заглушка) --- */
-  const form = document.getElementById('club-form');
-  if (form) {
+  /* --- Отправка форм (заглушка) --- */
+  document.querySelectorAll('#club-form, #trial-form').forEach((form) => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"]');
@@ -41,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
       form.reset();
       setTimeout(() => { btn.textContent = original; btn.disabled = false; }, 3000);
     });
-  }
+  });
 
   /* --- Появление секций при скролле --- */
   const io = new IntersectionObserver((entries) => {
