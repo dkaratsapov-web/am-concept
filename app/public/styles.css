@@ -456,10 +456,9 @@ img { max-width: 100%; display: block; }
    Наши мероприятия
    =========================================================== */
 .events { padding-bottom: 55px; position: relative; overflow: hidden; }
-/* искры-обложка на фоне блока мероприятий */
+/* искры-обложка во всю ширину секции */
 .events__sparkles { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
-.events > .eyebrow,
-.events__grid { position: relative; z-index: 1; }
+.events > .container { position: relative; z-index: 1; }
 .events__grid {
   margin-top: 36px;
   display: flex;

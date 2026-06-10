@@ -92,20 +92,21 @@ export default function App() {
         </section>
 
         {/* ░░░ Наши мероприятия ░░░ */}
-        <section className="section events container" id="events">
+        <section className="section events" id="events">
           <div className="events__sparkles" aria-hidden="true">
             <SparklesCore
               background="transparent"
               particleColor="#C6A65C"
-              minSize={0.6}
-              maxSize={1.4}
-              particleDensity={90}
+              minSize={0.7}
+              maxSize={1.5}
+              particleDensity={60}
               speed={1}
               className="w-full h-full"
             />
           </div>
-          <span className="eyebrow">Наши мероприятия</span>
-          <div className="events__grid">
+          <div className="container">
+            <span className="eyebrow">Наши мероприятия</span>
+            <div className="events__grid">
             <figure className="events__video">
               <video
                 src="media/event.mp4"
@@ -134,6 +135,7 @@ export default function App() {
                 </div>
               </div>
             </div>
+          </div>
           </div>
         </section>
 

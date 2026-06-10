@@ -114,7 +114,7 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
     canvas.width = W;
     canvas.height = H;
     const ctx = canvas.getContext("2d")!;
-    const PIXEL_STEPS = 4;
+    const PIXEL_STEPS = 3; // плотнее → буквы собираются чётко
     const particles: Particle[] = [];
 
     const build = (word: string) => {
@@ -123,7 +123,7 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
       off.height = H;
       const octx = off.getContext("2d")!;
       octx.fillStyle = "white";
-      octx.font = '900 104px Georgia, "Times New Roman", serif';
+      octx.font = '900 112px Georgia, "Times New Roman", serif';
       octx.textAlign = "center";
       octx.textBaseline = "middle";
       octx.fillText(word, W / 2, H / 2);
@@ -150,9 +150,10 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
             p = new Particle();
             const rp = randomPos(W / 2, H / 2, (W + H) / 2, W, H);
             p.pos = rp;
-            p.maxSpeed = Math.random() * 1.6 + 1.4; // медленнее → читаемо
-            p.maxForce = p.maxSpeed * 0.09;
-            p.size = Math.random() * 1.4 + 2; // чуть крупнее точки
+            p.maxSpeed = Math.random() * 1.4 + 1; // спокойнее
+            p.maxForce = p.maxSpeed * 0.1;
+            p.closeEnoughTarget = 130; // тормозят заранее → меньше дрожь
+            p.size = Math.random() * 1.3 + 2.2; // крупные чёткие точки
             p.colorBlendRate = Math.random() * 0.02 + 0.006;
             particles.push(p);
           }
@@ -171,7 +172,7 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
 
     let raf = 0;
     const loop = () => {
-      ctx.fillStyle = "rgba(14,14,12,0.28)"; // короче шлейф → чёткие точки
+      ctx.fillStyle = "rgba(14,14,12,0.34)"; // короче шлейф → чёткие точки
       ctx.fillRect(0, 0, W, H);
       for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i];
