@@ -29,10 +29,26 @@ class Particle {
   colorBlendRate = 0.01;
 
   move() {
-    let prox = 1;
     const dx = this.pos.x - this.target.x;
     const dy = this.pos.y - this.target.y;
     const dist = Math.sqrt(dx * dx + dy * dy);
+
+    // мягкое прибытие без дрожи: в зоне цели плавно домогаемся и стоп
+    if (!this.isKilled && dist < this.closeEnoughTarget) {
+      this.pos.x += (this.target.x - this.pos.x) * 0.14;
+      this.pos.y += (this.target.y - this.pos.y) * 0.14;
+      if (dist < 0.5) {
+        this.pos.x = this.target.x;
+        this.pos.y = this.target.y;
+      }
+      this.vel.x = 0;
+      this.vel.y = 0;
+      this.acc.x = 0;
+      this.acc.y = 0;
+      return;
+    }
+
+    let prox = 1;
     if (dist < this.closeEnoughTarget) prox = dist / this.closeEnoughTarget;
 
     let tx = this.target.x - this.pos.x;
@@ -154,7 +170,7 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
             p.pos = rp;
             p.maxSpeed = Math.random() * 5 + 6; // быстро доходят до цели
             p.maxForce = p.maxSpeed * 0.09;
-            p.closeEnoughTarget = 120;
+            p.closeEnoughTarget = 90; // зона мягкого прибытия
             p.size = Math.random() * 1.5 + 2.5; // крупные чёткие точки
             p.colorBlendRate = Math.random() * 0.02 + 0.012;
             particles.push(p);
@@ -174,7 +190,7 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
 
     let raf = 0;
     const loop = () => {
-      ctx.fillStyle = "rgba(14,14,12,0.5)"; // короткий шлейф → чёткие точки даже на скорости
+      ctx.fillStyle = "rgba(14,14,12,0.55)"; // короткий шлейф → чёткие точки
       ctx.fillRect(0, 0, W, H);
       for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i];
