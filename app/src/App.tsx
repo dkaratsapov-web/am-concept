@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { Preloader } from "./Preloader";
+import { SparklesCore } from "./components/ui/sparkles";
 import { initBehaviors } from "./behaviors";
 
 export default function App() {
@@ -92,6 +93,17 @@ export default function App() {
 
         {/* ░░░ Наши мероприятия ░░░ */}
         <section className="section events container" id="events">
+          <div className="events__sparkles" aria-hidden="true">
+            <SparklesCore
+              background="transparent"
+              particleColor="#C6A65C"
+              minSize={0.6}
+              maxSize={1.4}
+              particleDensity={90}
+              speed={1}
+              className="w-full h-full"
+            />
+          </div>
           <span className="eyebrow">Наши мероприятия</span>
           <div className="events__grid">
             <figure className="events__video">

@@ -110,7 +110,7 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
     }
 
     const W = 1100;
-    const H = 340;
+    const H = 420;
     canvas.width = W;
     canvas.height = H;
     const ctx = canvas.getContext("2d")!;
@@ -150,10 +150,10 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
             p = new Particle();
             const rp = randomPos(W / 2, H / 2, (W + H) / 2, W, H);
             p.pos = rp;
-            p.maxSpeed = Math.random() * 6 + 4;
-            p.maxForce = p.maxSpeed * 0.05;
-            p.size = Math.random() * 1.6 + 1.8;
-            p.colorBlendRate = Math.random() * 0.0275 + 0.0025;
+            p.maxSpeed = Math.random() * 1.6 + 1.4; // медленнее → читаемо
+            p.maxForce = p.maxSpeed * 0.09;
+            p.size = Math.random() * 1.4 + 2; // чуть крупнее точки
+            p.colorBlendRate = Math.random() * 0.02 + 0.006;
             particles.push(p);
           }
           p.startColor = {
@@ -171,7 +171,7 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
 
     let raf = 0;
     const loop = () => {
-      ctx.fillStyle = "rgba(14,14,12,0.12)";
+      ctx.fillStyle = "rgba(14,14,12,0.28)"; // короче шлейф → чёткие точки
       ctx.fillRect(0, 0, W, H);
       for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i];
@@ -187,7 +187,7 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
     build("A&M CONCEPT");
     loop();
 
-    const t = window.setTimeout(onComplete, 2700);
+    const t = window.setTimeout(onComplete, 4200); // дольше держим читаемый текст
     return () => {
       cancelAnimationFrame(raf);
       clearTimeout(t);
