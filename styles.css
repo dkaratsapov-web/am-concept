@@ -584,8 +584,20 @@ img { max-width: 100%; display: block; }
 }
 
 /* ===========================================================
-   Пространство
+   Пространство — светлая бежевая подложка во всю ширину
    =========================================================== */
+.space {
+  background-color: #F1E4CE;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(21,20,15,.045) 0 1px, transparent 1px 96px),
+    repeating-linear-gradient(90deg, rgba(21,20,15,.045) 0 1px, transparent 1px 96px);
+  color: var(--ink);
+}
+.space .display { color: var(--ink); }
+.space .eyebrow { color: rgba(21,20,15,.55); }
+.space .features li { color: var(--ink); border-color: rgba(21,20,15,.16); }
+.space .features__num { color: #A9863F; }
+.space .link-dot { color: var(--ink); border-color: rgba(21,20,15,.22); }
 .space__head {
   display: flex;
   justify-content: space-between;
