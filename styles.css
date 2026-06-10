@@ -47,22 +47,6 @@ img { max-width: 100%; display: block; }
   padding-inline: 40px;
 }
 
-/* ---------- Декоративные свечения ---------- */
-.glow {
-  position: absolute;
-  width: 548px; height: 548px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(198,166,92,.30) 0%, rgba(198,166,92,0) 70%);
-  filter: blur(40px);
-  pointer-events: none;
-  z-index: 0;
-}
-.glow--1 { top: 200px;   right: -160px; }
-.glow--2 { top: 2700px;  left:  -200px; }
-.glow--3 { top: 4600px;  right: -180px; }
-.glow--4 { top: 6300px;  left:  -200px; }
-.glow--5 { top: 8900px;  right: -160px; }
-
 /* ===========================================================
    Шапка
    =========================================================== */
