@@ -109,12 +109,12 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
       return;
     }
 
-    const W = 1100;
-    const H = 420;
+    const W = window.innerWidth;
+    const H = window.innerHeight;
     canvas.width = W;
     canvas.height = H;
     const ctx = canvas.getContext("2d")!;
-    const PIXEL_STEPS = 3; // плотнее → буквы собираются чётко
+    const PIXEL_STEPS = 4;
     const particles: Particle[] = [];
 
     const build = (word: string) => {
@@ -123,7 +123,8 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
       off.height = H;
       const octx = off.getContext("2d")!;
       octx.fillStyle = "white";
-      octx.font = '900 112px Georgia, "Times New Roman", serif';
+      const fs = Math.max(34, Math.min(W * 0.085, 132));
+      octx.font = `900 ${fs}px Georgia, "Times New Roman", serif`;
       octx.textAlign = "center";
       octx.textBaseline = "middle";
       octx.fillText(word, W / 2, H / 2);
@@ -150,11 +151,11 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
             p = new Particle();
             const rp = randomPos(W / 2, H / 2, (W + H) / 2, W, H);
             p.pos = rp;
-            p.maxSpeed = Math.random() * 1.4 + 1; // спокойнее
-            p.maxForce = p.maxSpeed * 0.1;
-            p.closeEnoughTarget = 130; // тормозят заранее → меньше дрожь
-            p.size = Math.random() * 1.3 + 2.2; // крупные чёткие точки
-            p.colorBlendRate = Math.random() * 0.02 + 0.006;
+            p.maxSpeed = Math.random() * 4 + 5; // быстро доходят до цели
+            p.maxForce = p.maxSpeed * 0.08;
+            p.closeEnoughTarget = 120;
+            p.size = Math.random() * 1.5 + 2.5; // крупные чёткие точки
+            p.colorBlendRate = Math.random() * 0.02 + 0.012;
             particles.push(p);
           }
           p.startColor = {
@@ -172,7 +173,7 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
 
     let raf = 0;
     const loop = () => {
-      ctx.fillStyle = "rgba(14,14,12,0.34)"; // короче шлейф → чёткие точки
+      ctx.fillStyle = "rgba(14,14,12,0.5)"; // короткий шлейф → чёткие точки даже на скорости
       ctx.fillRect(0, 0, W, H);
       for (let i = particles.length - 1; i >= 0; i--) {
         const p = particles[i];
@@ -188,7 +189,7 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
     build("A&M CONCEPT");
     loop();
 
-    const t = window.setTimeout(onComplete, 4200); // дольше держим читаемый текст
+    const t = window.setTimeout(onComplete, 3800); // успевают собраться + держим
     return () => {
       cancelAnimationFrame(raf);
       clearTimeout(t);

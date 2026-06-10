@@ -40,8 +40,9 @@
   visibility: hidden;
 }
 .preloader__canvas {
-  width: min(1040px, 94vw);
-  height: auto;
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 html { scroll-behavior: smooth; scroll-padding-top: 90px; }
