@@ -345,14 +345,14 @@ img { max-width: 100%; display: block; }
 .trial__card {
   position: relative;
   overflow: hidden;
-  max-width: 1120px;
+  max-width: 1280px;
   margin-inline: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 32px;
   flex-wrap: wrap;
-  padding: 20px 40px;
+  padding: 20px 36px;
   border-radius: 26px;
   color: var(--ink);
   background: linear-gradient(118deg, #B8924A 0%, #D8BE84 42%, #C6A65C 100%);
@@ -373,7 +373,7 @@ img { max-width: 100%; display: block; }
   background: radial-gradient(circle, rgba(255,255,255,.45), rgba(255,255,255,0) 70%);
   pointer-events: none;
 }
-.trial__intro { position: relative; z-index: 1; max-width: 440px; }
+.trial__intro { position: relative; z-index: 1; }
 .trial__badge {
   display: inline-block;
   margin-bottom: 8px;
@@ -390,9 +390,10 @@ img { max-width: 100%; display: block; }
   font-family: var(--display);
   font-weight: 500;
   text-transform: uppercase;
-  font-size: clamp(22px, 2.1vw, 34px);
+  font-size: clamp(22px, 2vw, 32px);
   line-height: .96;
   color: var(--ink);
+  white-space: nowrap;
 }
 .trial__form {
   position: relative;
@@ -403,7 +404,7 @@ img { max-width: 100%; display: block; }
   gap: 10px;
 }
 .trial__form input {
-  width: 170px;
+  width: 160px;
   background: rgba(255,255,255,.9);
   border: 1px solid rgba(21,20,15,.14);
   border-radius: 14px;
@@ -691,6 +692,7 @@ img { max-width: 100%; display: block; }
   .features { grid-template-columns: 1fr; }
   .grid-cards, .grid-cards--3, .grid-trainers, .contacts__grid { grid-template-columns: 1fr; }
   .trial__card { padding: 24px 22px; gap: 18px; border-radius: 24px; }
+  .trial__title { white-space: normal; }
   .trial__form { width: 100%; }
   .trial__form input, .trial__form button { width: 100%; }
   .trial__deco { right: -150px; top: -190px; }
