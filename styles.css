@@ -23,6 +23,27 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* ===========================================================
+   Прелоадер (частицы → «A&M CONCEPT»)
+   =========================================================== */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #0E0E0C;
+  display: grid;
+  place-items: center;
+  transition: opacity .85s ease, visibility .85s ease;
+}
+.preloader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+.preloader__canvas {
+  width: min(900px, 92vw);
+  height: auto;
+}
+
 html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 
 body {
