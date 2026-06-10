@@ -587,6 +587,47 @@ img { max-width: 100%; display: block; }
 }
 
 /* ===========================================================
+   Цитата с анимацией печати
+   =========================================================== */
+.quote { text-align: center; }
+.quote__box { max-width: 1000px; margin-inline: auto; }
+.quote__mark {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(80px, 12vw, 150px);
+  line-height: .5;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.quote__text {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(26px, 3.6vw, 52px);
+  line-height: 1.3;
+  color: var(--cream);
+  min-height: 2.6em;
+}
+.quote__caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.05em;
+  margin-left: 4px;
+  vertical-align: -0.15em;
+  background: var(--gold);
+  animation: caret-blink 1s step-end infinite;
+}
+@keyframes caret-blink { 50% { opacity: 0; } }
+.quote__author {
+  margin-top: 30px;
+  color: var(--gold-soft);
+  font-size: 17px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.quote__author::before { content: "— "; }
+
+/* ===========================================================
    Пространство — светлая бежевая подложка во всю ширину
    =========================================================== */
 .space {
