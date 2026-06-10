@@ -6,9 +6,12 @@ export default function App() {
   const [fading, setFading] = useState(false);
   const [removed, setRemoved] = useState(false);
 
-  // блокируем скролл, пока показан прелоадер
+  // блокируем скролл, пока показан прелоадер; подстраховка — снять не позже 6с
   useEffect(() => {
     document.documentElement.style.overflow = "hidden";
+    const failsafe = window.setTimeout(() => handlePreloaderDone(), 6000);
+    return () => clearTimeout(failsafe);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handlePreloaderDone = useCallback(() => {
