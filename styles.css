@@ -3,6 +3,9 @@
    Воссоздание дизайна из Figma
    =========================================================== */
 
+/* Дисплейный шрифт из макета: Bebas Neue Cyrillic (узкий, капсом) */
+@import url('https://fonts.cdnfonts.com/css/bebas-neue-cyrillic');
+
 :root {
   --bg:        #3d3e30;   /* основной тёмно-оливковый фон   */
   --bg-2:      #34352a;   /* затемнение                     */
@@ -16,7 +19,7 @@
   --radius:    24px;
 
   --maxw: 1280px;
-  --display: 'Oswald', 'Bebas Neue', sans-serif;
+  --display: 'Bebas Neue Cyrillic', 'Oswald', 'Bebas Neue', sans-serif;
   --body: 'Manrope', system-ui, sans-serif;
 }
 
@@ -65,33 +68,32 @@ img { max-width: 100%; display: block; }
    Шапка
    =========================================================== */
 .header {
-  position: sticky;
-  top: 0;
+  position: fixed;
+  top: 0; left: 0; right: 0;
   z-index: 50;
-  backdrop-filter: blur(10px);
-  background: rgba(61,62,48,.72);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid transparent;
+  transition: background .35s ease, border-color .35s ease, backdrop-filter .35s ease;
+}
+/* затемнённая шапка после прокрутки первого экрана */
+.header.scrolled {
+  background: rgba(52,53,42,.92);
+  backdrop-filter: blur(12px);
+  border-bottom-color: var(--line);
 }
 .header__inner {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  padding-block: 18px;
+  padding-block: 20px;
 }
-.nav { display: flex; gap: 36px; font-size: 15px; }
+.nav { display: flex; gap: 42px; font-size: 16px; }
 .nav--left  { justify-content: flex-start; }
 .nav--right { justify-content: flex-end; }
-.nav a { color: var(--cream-dim); transition: color .2s; }
-.nav a:hover { color: var(--cream); }
+.nav a { color: rgba(255,255,255,.9); transition: color .2s; }
+.nav a:hover { color: #fff; }
 
-.logo {
-  text-align: center;
-  font-family: var(--display);
-  line-height: .9;
-}
-.logo span { display: block; font-size: 30px; font-weight: 600; letter-spacing: 1px; }
-.logo em { font-style: normal; color: var(--sage); }
-.logo small { display: block; font-size: 11px; letter-spacing: 6px; text-transform: uppercase; color: var(--cream-dim); }
+.logo { display: inline-flex; align-items: center; justify-self: center; }
+.logo img { height: 56px; width: auto; display: block; }
 
 /* ===========================================================
    Общие типографические элементы
@@ -203,56 +205,83 @@ img { max-width: 100%; display: block; }
 }
 
 /* ===========================================================
-   Hero
+   Hero — первый экран (полноэкранное фото)
    =========================================================== */
-.hero { padding-top: 90px; padding-bottom: 60px; text-align: center; }
-.hero__eyebrow { color: var(--cream-dim); font-size: 15px; margin-bottom: 26px; }
+.hero {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+.hero__media {
+  position: absolute;
+  inset: 0;
+  background-color: #9a9893;                 /* тон-заглушка, пока нет фото */
+  background-image: url('images/hero.jpg');  /* фото первого экрана */
+  background-size: cover;
+  background-position: center 18%;
+}
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom,
+      rgba(40,41,32,.42) 0%,
+      rgba(40,41,32,.04) 26%,
+      rgba(40,41,32,.10) 55%,
+      rgba(40,41,32,.78) 100%),
+    linear-gradient(to right, rgba(40,41,32,.30), rgba(40,41,32,0) 45%);
+}
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-top: 130px;
+  padding-bottom: 46px;
+}
+.hero__eyebrow {
+  text-align: center;
+  color: rgba(255,255,255,.95);
+  font-size: 18px;
+  letter-spacing: .2px;
+  margin-bottom: 7vh;
+}
 .hero__title {
   font-family: var(--display);
-  font-weight: 600;
-  font-size: clamp(48px, 7vw, 100px);
-  line-height: .98;
-  letter-spacing: -2px;
-  max-width: 1000px;
-  margin: 0 auto 38px;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: clamp(46px, 8vw, 132px);
+  line-height: .9;
+  letter-spacing: 1px;
+  color: #fff;
+  margin-bottom: 48px;
+  max-width: 1180px;
 }
-.hero__title span { color: var(--cream); }
-.hero__actions { display: flex; justify-content: space-between; align-items: center; max-width: 1000px; margin: 0 auto; }
-
-.hero__stage {
-  position: relative;
-  margin-top: 70px;
-  height: 460px;
+.hero__links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.hero__photo {
-  position: absolute;
-  border-radius: var(--radius);
-  background:
-    linear-gradient(160deg, #7c7e5c, #4a4b3a 60%, #34352a);
-  box-shadow: 0 30px 70px rgba(0,0,0,.35);
+.hero__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  font-size: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,.45);
+  transition: border-color .2s, gap .2s;
 }
-.hero__photo::after {
+.hero__link::after {
   content: "";
-  position: absolute; inset: 0; border-radius: inherit;
-  background: radial-gradient(120% 80% at 30% 20%, rgba(255,255,255,.12), transparent 55%);
+  width: 7px; height: 7px;          /* квадратный маркер, как в макете */
+  background: #fff;
 }
-.hero__photo--a { left: 0;   top: 40px;  width: 360px; height: 420px; }
-.hero__photo--b { left: 50%; top: 0;     width: 380px; height: 300px; transform: translateX(-50%); }
-.hero__photo--c { right: 0;  top: 60px;  width: 360px; height: 400px; }
-
-.badge {
-  position: absolute;
-  left: 50%; bottom: 26px;
-  transform: translateX(-50%);
-  background: var(--cream);
-  color: var(--ink);
-  padding: 11px 22px;
-  border-radius: 100px;
-  font-weight: 600;
-  font-size: 15px;
-  white-space: nowrap;
-  box-shadow: 0 14px 34px rgba(0,0,0,.3);
-}
+.hero__link:hover { gap: 18px; border-color: #fff; }
 
 /* ===========================================================
    О студии
@@ -505,11 +534,11 @@ img { max-width: 100%; display: block; }
   .section { padding-block: 70px; }
   .nav { display: none; }
   .header__inner { grid-template-columns: 1fr; justify-items: center; }
-  .hero__title { letter-spacing: -1px; }
-  .hero__actions { flex-direction: column; gap: 18px; }
-  .hero__stage { height: auto; display: flex; flex-direction: column; gap: 16px; }
-  .hero__photo { position: static; width: 100% !important; transform: none !important; height: 260px; }
-  .badge { position: static; transform: none; align-self: center; margin-top: 4px; }
+  .logo img { height: 46px; }
+  .hero__inner { padding-top: 110px; padding-bottom: 32px; }
+  .hero__eyebrow { font-size: 15px; margin-bottom: 12vh; }
+  .hero__title { letter-spacing: 0; }
+  .hero__links { flex-direction: column; align-items: flex-start; gap: 18px; }
   .about__grid, .services__row, .space__head, .promos__head { grid-template-columns: 1fr; display: grid; gap: 30px; }
   .services__row--reverse .services__photo { order: 0; }
   .features { grid-template-columns: 1fr; }

@@ -1,6 +1,16 @@
 // A&M Concept — небольшая интерактивность лендинга
 
 document.addEventListener('DOMContentLoaded', () => {
+  /* --- Затемнение шапки после первого экрана --- */
+  const header = document.querySelector('.header');
+  if (header) {
+    const onScroll = () => {
+      header.classList.toggle('scrolled', window.scrollY > window.innerHeight * 0.72);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
   /* --- Маска телефона --- */
   const phone = document.querySelector('input[name="phone"]');
   if (phone) {
