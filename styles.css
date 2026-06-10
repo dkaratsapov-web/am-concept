@@ -342,12 +342,12 @@ img { max-width: 100%; display: block; }
 .trial__card {
   position: relative;
   overflow: hidden;
-  max-width: 1280px;
+  max-width: 1360px;
   margin-inline: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 32px;
+  gap: 24px;
   flex-wrap: wrap;
   padding: 20px 36px;
   border-radius: 26px;
@@ -375,9 +375,9 @@ img { max-width: 100%; display: block; }
   font-family: var(--display);
   font-weight: 600;
   text-transform: uppercase;
-  font-size: clamp(22px, 2.1vw, 34px);
+  font-size: clamp(20px, 1.8vw, 30px);
   line-height: .98;
-  letter-spacing: .5px;
+  letter-spacing: 0;
   color: var(--ink);
   white-space: nowrap;
 }
@@ -387,10 +387,10 @@ img { max-width: 100%; display: block; }
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 .trial__form input {
-  width: 160px;
+  width: 150px;
   background: rgba(255,255,255,.9);
   border: 1px solid rgba(21,20,15,.14);
   border-radius: 14px;
