@@ -64,13 +64,20 @@
 
     <!-- ░░░ Золотая форма «Пробная тренировка» — во всю ширину ░░░ -->
     <section class="trial" id="trial">
-      <div class="trial__inner container">
-        <h2 class="trial__title">Записаться на пробную тренировку</h2>
-        <form class="trial__form" id="trial-form" novalidate>
-          <input type="text" name="name" placeholder="Ваше имя" required />
-          <input type="tel" name="phone" placeholder="Телефон" required />
-          <button type="submit">Записаться</button>
-        </form>
+      <div class="container">
+        <div class="trial__card">
+          <div class="trial__deco" aria-hidden="true"></div>
+          <div class="trial__intro">
+            <span class="trial__badge">Первый визит</span>
+            <h2 class="trial__title">Записаться на пробную тренировку</h2>
+            <p class="trial__sub">Познакомьтесь со студией — мягко, без обязательств и давления.</p>
+          </div>
+          <form class="trial__form" id="trial-form" novalidate>
+            <input type="text" name="name" placeholder="Ваше имя" required />
+            <input type="tel" name="phone" placeholder="Телефон" required />
+            <button type="submit">Записаться</button>
+          </form>
+        </div>
       </div>
     </section>
 
