@@ -335,9 +335,12 @@ img { max-width: 100%; display: block; }
 .trial {
   position: relative;
   z-index: 2;
-  padding-block: 36px;
+  padding-top: 4px;
+  padding-bottom: 24px;
   background: var(--bg);
 }
+/* меньше чёрного «воздуха» между карточкой и следующей секцией */
+.trial + .section { padding-top: 56px; }
 /* золотая карточка — узкая и компактная */
 .trial__card {
   position: relative;
