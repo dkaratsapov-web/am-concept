@@ -7,18 +7,20 @@
 @import url('https://fonts.cdnfonts.com/css/bebas-neue-cyrillic');
 
 :root {
-  --bg:        #3d3e30;   /* основной тёмно-оливковый фон   */
-  --bg-2:      #34352a;   /* затемнение                     */
-  --cream:     #ece5d2;   /* кремовый — заголовки/текст     */
-  --cream-dim: #b6b2a0;   /* приглушённый кремовый          */
-  --panel:     #e9e2cd;   /* светлые бежевые панели         */
-  --panel-2:   #ddd5bd;
-  --ink:       #34352a;   /* тёмный текст на светлом        */
-  --line:      rgba(236, 229, 210, .16);
-  --sage:      #8c8f6b;   /* акцент / свечения              */
+  --bg:        #0E0E0C;   /* чёрный — основной фон          */
+  --bg-2:      #17150F;   /* тёмная карточка                */
+  --cream:     #EADFCB;   /* бежевый — заголовки/текст      */
+  --cream-dim: #B4A98F;   /* приглушённый бежевый           */
+  --panel:     #EADFCB;   /* светлые бежевые панели         */
+  --panel-2:   #DFD3B9;
+  --ink:       #15140F;   /* почти чёрный текст на бежевом  */
+  --line:      rgba(234, 223, 203, .16);
+  --sage:      #C6A65C;   /* золото — акцент (alias)         */
+  --gold:      #C6A65C;   /* фирменное золото               */
+  --gold-soft: #D8BE84;
   --radius:    24px;
 
-  --maxw: 1280px;
+  --maxw: 1600px;
   --display: 'Bebas Neue Cyrillic', 'Oswald', 'Bebas Neue', sans-serif;
   --body: 'Manrope', system-ui, sans-serif;
 }
@@ -53,7 +55,7 @@ img { max-width: 100%; display: block; }
   position: absolute;
   width: 548px; height: 548px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(140,143,107,.55) 0%, rgba(140,143,107,0) 70%);
+  background: radial-gradient(circle, rgba(198,166,92,.30) 0%, rgba(198,166,92,0) 70%);
   filter: blur(40px);
   pointer-events: none;
   z-index: 0;
@@ -88,7 +90,7 @@ img { max-width: 100%; display: block; }
 }
 /* затемнённая шапка после прокрутки первого экрана */
 .header.scrolled .header__inner {
-  background: rgba(52,53,42,.9);
+  background: rgba(20,19,15,.9);
   border-color: var(--line);
 }
 .nav { display: flex; gap: 42px; font-size: 16px; }
@@ -118,7 +120,7 @@ img { max-width: 100%; display: block; }
 }
 .eyebrow--end { flex-direction: row-reverse; }
 .eyebrow--end::after { margin: 0; }
-.eyebrow--dark { color: rgba(52,53,42,.6); }
+.eyebrow--dark { color: rgba(20,19,15,.6); }
 .eyebrow--dark::after { background: var(--ink); }
 
 .display {
@@ -197,9 +199,9 @@ img { max-width: 100%; display: block; }
 .photo {
   border-radius: var(--radius);
   background:
-    linear-gradient(135deg, rgba(236,229,210,.10), rgba(52,53,42,.5)),
-    repeating-linear-gradient(45deg, rgba(236,229,210,.04) 0 14px, transparent 14px 28px),
-    linear-gradient(160deg, #6f7152, #4a4b3a 60%, #34352a);
+    linear-gradient(135deg, rgba(234,223,203,.10), rgba(20,19,15,.5)),
+    repeating-linear-gradient(45deg, rgba(234,223,203,.04) 0 14px, transparent 14px 28px),
+    linear-gradient(160deg, #2E2920, #211D16 60%, #17150F);
   position: relative;
   overflow: hidden;
 }
@@ -227,7 +229,7 @@ img { max-width: 100%; display: block; }
   inset: 0;
   overflow: hidden;
   background:
-    radial-gradient(130% 120% at 28% 18%, #c4c2ba 0%, #97958d 42%, #5e5d56 100%);
+    radial-gradient(130% 120% at 28% 18%, #2A2820 0%, #16140F 42%, #0B0B09 100%);
   animation: heroZoom 32s ease-in-out infinite alternate;
 }
 .hero__media video {
@@ -246,7 +248,7 @@ img { max-width: 100%; display: block; }
   animation: heroDrift 18s ease-in-out infinite alternate;
 }
 .hero__media::after {
-  background: radial-gradient(42% 42% at 50% 50%, rgba(150,160,140,.35), rgba(150,160,140,0) 70%);
+  background: radial-gradient(42% 42% at 50% 50%, rgba(198,166,92,.35), rgba(198,166,92,0) 70%);
   animation-duration: 26s;
   animation-direction: alternate-reverse;
   opacity: .75;
@@ -270,11 +272,11 @@ img { max-width: 100%; display: block; }
   inset: 0;
   background:
     linear-gradient(to bottom,
-      rgba(40,41,32,.42) 0%,
-      rgba(40,41,32,.04) 26%,
-      rgba(40,41,32,.10) 55%,
-      rgba(40,41,32,.78) 100%),
-    linear-gradient(to right, rgba(40,41,32,.30), rgba(40,41,32,0) 45%);
+      rgba(10,10,8,.42) 0%,
+      rgba(10,10,8,.04) 26%,
+      rgba(10,10,8,.10) 55%,
+      rgba(10,10,8,.78) 100%),
+    linear-gradient(to right, rgba(10,10,8,.30), rgba(10,10,8,0) 45%);
 }
 .hero__inner {
   position: relative;
@@ -404,7 +406,7 @@ img { max-width: 100%; display: block; }
   min-height: 320px;
   transition: background .25s;
 }
-.dcard:hover { background: rgba(140,143,107,.10); }
+.dcard:hover { background: rgba(198,166,92,.10); }
 .dcard h3 { font-family: var(--display); font-weight: 500; font-size: 26px; }
 .dcard p { color: var(--cream-dim); flex: 1; }
 
@@ -423,7 +425,7 @@ img { max-width: 100%; display: block; }
 .services__row--reverse .services__photo { order: 2; }
 .services__photo { height: 420px; }
 .services__text { display: flex; flex-direction: column; gap: 24px; align-items: flex-start; }
-.photo--massage { background: linear-gradient(160deg, #847e63, #4a473a 60%, #34352a); }
+.photo--massage { background: linear-gradient(160deg, #2A251B, #1C1913 60%, #17150F); }
 
 /* ===========================================================
    Тренеры
@@ -479,15 +481,15 @@ img { max-width: 100%; display: block; }
   gap: 60px;
   align-items: center;
 }
-.featured__note { color: rgba(52,53,42,.7); margin-top: 20px; max-width: 420px; }
+.featured__note { color: rgba(20,19,15,.7); margin-top: 20px; max-width: 420px; }
 .featured__left .display { margin-top: 20px; }
 
 .featured__form { display: flex; flex-direction: column; gap: 18px; }
 .field { display: flex; flex-direction: column; gap: 8px; }
-.field span { font-size: 13px; color: rgba(52,53,42,.7); }
+.field span { font-size: 13px; color: rgba(20,19,15,.7); }
 .field input {
   background: rgba(255,255,255,.55);
-  border: 1px solid rgba(52,53,42,.18);
+  border: 1px solid rgba(20,19,15,.18);
   border-radius: 14px;
   padding: 14px 18px;
   font-family: var(--body);
@@ -495,7 +497,7 @@ img { max-width: 100%; display: block; }
   color: var(--ink);
 }
 .field input:focus { outline: 2px solid var(--ink); outline-offset: 1px; }
-.consent { display: flex; gap: 12px; font-size: 12.5px; color: rgba(52,53,42,.7); line-height: 1.45; }
+.consent { display: flex; gap: 12px; font-size: 12.5px; color: rgba(20,19,15,.7); line-height: 1.45; }
 .consent input { margin-top: 3px; accent-color: var(--ink); }
 
 /* ===========================================================
@@ -529,10 +531,10 @@ img { max-width: 100%; display: block; }
   height: 420px;
   border-radius: var(--radius);
   background:
-    linear-gradient(0deg, rgba(52,53,42,.4), rgba(52,53,42,.4)),
-    repeating-linear-gradient(0deg, rgba(236,229,210,.06) 0 1px, transparent 1px 60px),
-    repeating-linear-gradient(90deg, rgba(236,229,210,.06) 0 1px, transparent 1px 60px),
-    linear-gradient(160deg, #565843, #3d3e30);
+    linear-gradient(0deg, rgba(20,19,15,.4), rgba(20,19,15,.4)),
+    repeating-linear-gradient(0deg, rgba(234,223,203,.06) 0 1px, transparent 1px 60px),
+    repeating-linear-gradient(90deg, rgba(234,223,203,.06) 0 1px, transparent 1px 60px),
+    linear-gradient(160deg, #1C1A14, #0E0E0C);
   position: relative;
 }
 .contacts__map::after {
