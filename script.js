@@ -41,6 +41,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* --- Звук видео мероприятий --- */
+  document.querySelectorAll('.events__sound').forEach((btn) => {
+    const video = btn.closest('.events__video').querySelector('video');
+    btn.addEventListener('click', () => {
+      video.muted = !video.muted;
+      btn.textContent = video.muted ? '🔇' : '🔊';
+      if (!video.muted) video.play();
+    });
+  });
+
   /* --- Появление секций при скролле --- */
   const io = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
