@@ -422,13 +422,14 @@ img { max-width: 100%; display: block; }
 /* ===========================================================
    Наши мероприятия
    =========================================================== */
-.events .display { margin: 22px 0 0; }
+.events { text-align: center; }
 .events__grid {
-  margin-top: 50px;
-  display: grid;
-  grid-template-columns: 360px 1fr;
-  gap: 56px;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
   align-items: center;
+  gap: 56px;
+  flex-wrap: wrap;
 }
 .events__video {
   position: relative;
@@ -463,7 +464,7 @@ img { max-width: 100%; display: block; }
   transition: background .2s;
 }
 .events__sound:hover { background: rgba(20,19,15,.8); }
-.events__info { max-width: 600px; }
+.events__info { max-width: 560px; text-align: left; }
 .events__lead { font-size: 19px; line-height: 1.7; color: var(--cream); }
 .events__cta {
   margin-top: 34px;
@@ -503,6 +504,26 @@ img { max-width: 100%; display: block; }
   padding: 15px 34px;
 }
 .events__btn:hover { background: var(--gold-soft); }
+/* таб локации */
+.events__place {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 100px;
+  border: 1px solid var(--line);
+  background: var(--bg-2);
+  color: var(--cream);
+  font-size: 14px;
+  font-weight: 600;
+}
+.events__place::before {
+  content: "";
+  width: 14px; height: 14px;
+  background: var(--gold);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
 
 /* ===========================================================
    О студии
