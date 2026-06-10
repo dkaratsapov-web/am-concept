@@ -221,51 +221,25 @@ img { max-width: 100%; display: block; }
   display: flex;
   overflow: hidden;
 }
-/* Подложка под видео. Пока — анимированная имитация.
-   Когда будет ролик, вставьте внутрь .hero__media:
-   <video autoplay muted loop playsinline src="media/hero.mp4"></video>  */
+/* Подложка первого экрана: фото студии (позже можно заменить на <video>) */
 .hero__media {
   position: absolute;
   inset: 0;
   overflow: hidden;
-  background:
-    radial-gradient(130% 120% at 28% 18%, #2A2820 0%, #16140F 42%, #0B0B09 100%);
-  animation: heroZoom 32s ease-in-out infinite alternate;
+  background: #0E0E0C url('images/hero.jpg') center 32% / cover no-repeat;
+  animation: heroZoom 34s ease-in-out infinite alternate;
 }
 .hero__media video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-/* дрейфующие световые пятна — ощущение движущегося видео */
-.hero__media::before,
-.hero__media::after {
-  content: "";
-  position: absolute;
-  inset: -25%;
-  background: radial-gradient(38% 38% at 50% 50%, rgba(255,255,255,.30), rgba(255,255,255,0) 70%);
-  mix-blend-mode: screen;
-  animation: heroDrift 18s ease-in-out infinite alternate;
-}
-.hero__media::after {
-  background: radial-gradient(42% 42% at 50% 50%, rgba(198,166,92,.35), rgba(198,166,92,0) 70%);
-  animation-duration: 26s;
-  animation-direction: alternate-reverse;
-  opacity: .75;
-}
 @keyframes heroZoom {
-  0%   { transform: scale(1.05); }
-  100% { transform: scale(1.16); }
-}
-@keyframes heroDrift {
-  0%   { transform: translate3d(-10%, -8%, 0) scale(1); }
-  50%  { transform: translate3d(6%, 4%, 0) scale(1.25); }
-  100% { transform: translate3d(12%, 10%, 0) scale(1.1); }
+  0%   { transform: scale(1.04); }
+  100% { transform: scale(1.14); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero__media,
-  .hero__media::before,
-  .hero__media::after { animation: none; }
+  .hero__media { animation: none; }
 }
 .hero__scrim {
   position: absolute;
