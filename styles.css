@@ -219,6 +219,15 @@ img { max-width: 100%; display: block; }
   z-index: 1;
   min-height: 100vh;
   display: flex;
+  padding: 14px;              /* поля вокруг рамки */
+  background: var(--bg);      /* чёрный фон вокруг фото */
+}
+/* фото в скруглённой рамке */
+.hero__frame {
+  position: relative;
+  flex: 1;
+  display: flex;
+  border-radius: 30px;
   overflow: hidden;
 }
 /* Подложка первого экрана: фото студии (позже можно заменить на <video>) */
