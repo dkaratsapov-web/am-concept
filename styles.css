@@ -550,37 +550,34 @@ img { max-width: 100%; display: block; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
-  align-items: stretch;        /* фото тянется по высоте текста */
+  align-items: start;          /* верх фото по верху текста */
 }
 .about__text {
   max-width: 640px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 18px;
   font-size: 17px;
   line-height: 1.7;
   color: var(--cream);
 }
 .about__highlight { color: var(--gold-soft); font-weight: 600; }
-/* фото в матовой рамке с золотым кантом — высота = высоте текста */
+/* вертикальное фото (3:4) в матовой рамке с золотым кантом */
 .about__media {
-  position: relative;
-  overflow: hidden;
   margin: 0;
   justify-self: end;
   width: 100%;
-  max-width: 440px;
+  max-width: 420px;
+  padding: 12px;
   border-radius: 28px;
   background: linear-gradient(160deg, #211D16, #15140F);
   border: 1px solid var(--line);
   box-shadow: 0 30px 70px rgba(0,0,0,.5);
 }
 .about__media img {
-  position: absolute;
-  inset: 12px;
-  width: calc(100% - 24px);
-  height: calc(100% - 24px);
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
   border-radius: 18px;
   border: 1px solid rgba(198,166,92,.35);
@@ -842,7 +839,7 @@ img { max-width: 100%; display: block; }
   .hero__title { letter-spacing: 0; }
   .hero__links { flex-direction: column; align-items: flex-start; gap: 18px; }
   .about__grid, .services__row, .space__head, .promos__head { grid-template-columns: 1fr; display: grid; gap: 30px; }
-  .about__media { justify-self: stretch; max-width: 420px; aspect-ratio: 3 / 4; }
+  .about__media { justify-self: stretch; max-width: 420px; }
   .services__row--reverse .services__photo { order: 0; }
   .features { grid-template-columns: 1fr; }
   .grid-cards, .grid-cards--3, .grid-trainers, .contacts__grid { grid-template-columns: 1fr; }
