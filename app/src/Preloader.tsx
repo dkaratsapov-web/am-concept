@@ -114,7 +114,8 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
     canvas.width = W;
     canvas.height = H;
     const ctx = canvas.getContext("2d")!;
-    const PIXEL_STEPS = 4;
+    const PIXEL_STEPS = 5;
+    const SPAWN_RADIUS = Math.min(W, H) * 0.55; // спавн ближе к центру
     const particles: Particle[] = [];
 
     const build = (word: string) => {
@@ -149,10 +150,10 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
             idx++;
           } else {
             p = new Particle();
-            const rp = randomPos(W / 2, H / 2, (W + H) / 2, W, H);
+            const rp = randomPos(W / 2, H / 2, SPAWN_RADIUS, W, H);
             p.pos = rp;
-            p.maxSpeed = Math.random() * 4 + 5; // быстро доходят до цели
-            p.maxForce = p.maxSpeed * 0.08;
+            p.maxSpeed = Math.random() * 5 + 6; // быстро доходят до цели
+            p.maxForce = p.maxSpeed * 0.09;
             p.closeEnoughTarget = 120;
             p.size = Math.random() * 1.5 + 2.5; // крупные чёткие точки
             p.colorBlendRate = Math.random() * 0.02 + 0.012;
@@ -189,7 +190,7 @@ export function Preloader({ onComplete }: { onComplete: () => void }) {
     build("A&M CONCEPT");
     loop();
 
-    const t = window.setTimeout(onComplete, 3800); // успевают собраться + держим
+    const t = window.setTimeout(onComplete, 4300); // успевают собраться + держим
     return () => {
       cancelAnimationFrame(raf);
       clearTimeout(t);
