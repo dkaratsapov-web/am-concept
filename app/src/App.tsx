@@ -1,37 +1,13 @@
-import { useCallback, useEffect, useState } from "react";
-import { Preloader } from "./Preloader";
+import { useEffect } from "react";
 import { SparklesCore } from "./components/ui/sparkles";
 import { initBehaviors } from "./behaviors";
 
 export default function App() {
-  const [fading, setFading] = useState(false);
-  const [removed, setRemoved] = useState(false);
-
-  // блокируем скролл, пока показан прелоадер; подстраховка — снять не позже 6с
-  useEffect(() => {
-    document.documentElement.style.overflow = "hidden";
-    const failsafe = window.setTimeout(() => handlePreloaderDone(), 7500);
-    return () => clearTimeout(failsafe);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const handlePreloaderDone = useCallback(() => {
-    setFading(true);
-    document.documentElement.style.overflow = "";
-    window.setTimeout(() => setRemoved(true), 900);
-  }, []);
-
   // интерактив лендинга — после монтирования секций
   useEffect(() => initBehaviors(), []);
 
   return (
     <>
-      {!removed && (
-        <div className={"preloader" + (fading ? " is-hidden" : "")}>
-          <Preloader onComplete={handlePreloaderDone} />
-        </div>
-      )}
-
       {/* ░░░ Шапка ░░░ */}
       <header className="header" id="top">
         <div className="header__bar">
